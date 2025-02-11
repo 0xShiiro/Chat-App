@@ -9,9 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "next": "15.1.6",
+    "ethers": "^6.13.5",
+    "next": "^15.1.6",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "web3modal": "^1.9.12"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

@@ -1,4 +1,4 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+It is a Blockchain based ChatApp built on Next.js , where users can make friends simply by having their public address and also they Can send messages and retrive the older conversations
 
 ## Getting Started
 
