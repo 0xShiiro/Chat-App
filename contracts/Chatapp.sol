@@ -1,4 +1,4 @@
-// SPDX-License-Provider:MIT
+// SPDX-License-Provider: MIT 
 pragma solidity ^0.8.25;
 
 contract ChatApp{
