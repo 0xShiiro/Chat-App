@@ -16,26 +16,29 @@ export const ChatAppProvider = ({children}) => {
     const [currentUser, setcurrentUser] = useState("")
     const [currentUserAddress, setcurrentUserAddress] = useState("")
 
-    const router = useRouter();
+    
 
     const fetchData = async() =>{
         try{
             const contract = await conncectingWithContract();
             const connectAccount = await connectWallet();
-            setaccount(connectAccount);
-            const userName = await contract.getUserName(connectAccount);
-            setuserName(userName);
-            const friendlist = await contract.getFriendList(connectAccount);
-            setfriendLists(friendlist);
-            const userlist = await contract.getAllUsers();
-            setuserLists(userlist);
+            if (connectAccount) {
+                console.log(connectAccount);
+                setaccount(connectAccount);
+                const userName = await contract.getUserName(connectAccount);
+                setUserName(userName);
+                const friendList = await contract.getFriendList(connectAccount);
+                setFriendLists(friendList);
+                const userList = await contract.getAllUsers();
+                setUserLists(userList);
+            }
     } catch(error){
         console.log(error)
     }
+    };
     useEffect(() => {
         fetchData();
     },[]);
-    }
     const readMessage = async(friendAddress) =>{
         try {
             const contract = await conncectingWithContract();
