@@ -4,8 +4,8 @@ import Image from "next/image";
 import Link from 'next/link';
 import Style from './NavBar.module.css'
 import { ChatAppContext } from '../../context/ChatAppContext';
-import { Model } from "../Model/Model";
-import { Error } from "../Error/Error";
+import  Model  from "../Model/Model";
+import  Error  from "../Error/Error";
 import images from "../../assets/index"
 export const NavBar = () => {
   const menuItems = [
@@ -37,8 +37,9 @@ export const NavBar = () => {
   const [active, setactive] = useState(2);
   const [open, setopen] = useState(false);
   const [openModal, setopenModal] = useState(false);
+  const [error, seterror] = useState("")
 
-  const { account, userName, connectWallet } = useContext(ChatAppContext);
+  const { account, userName, connectWallet,createAccount } = useContext(ChatAppContext);
   console.log(account);
   return (
     <div className={Style.NavBar}>
@@ -119,6 +120,21 @@ export const NavBar = () => {
           </div>
         </div>
       </div>
+      {/* {Model Component} */}
+      {openModal && (
+        <div className={Style.modelBox}>
+          <Model openBox={setopenModal} 
+                title ="Welcome to BlockChat"
+                head="Social App"
+                address={account}
+                info="This is a chat app where you can chat with your friends and family. You can also create a group and chat with your friends. You can also create a group and chat with your friends."
+                smallInfo="Kindly enter your name"   
+                image={images.hero}
+                fucntionName={createAccount}             
+          />
+        </div>
+      )}
+      {error=="" ? "":<Error />}
     </div>
   )
 }
