@@ -1,6 +1,6 @@
 'use client'
 import React,{useState , useEffect} from 'react'
-import {useRouter} from 'next/navigation'
+// import {useRouter} from 'next/navigation'
 
 import { CheckIfWalletConnected,connectWallet,connectingWithContract } from '../Utils/apiFeature';
 
@@ -16,8 +16,8 @@ export const ChatAppProvider = ({children}) => {
     const [currentUser, setcurrentUser] = useState("")
     const [currentUserAddress, setcurrentUserAddress] = useState("")
 
-  const [routerReady, setRouterReady] = useState(false);
-    const router = useRouter();
+//   const [routerReady, setRouterReady] = useState(false);
+    // const router = useRouter();
 
     
 
@@ -41,14 +41,14 @@ export const ChatAppProvider = ({children}) => {
     };
     useEffect(() => {
         fetchData();
-        setRouterReady(true);
+        // setRouterReady(true);
     },[]);
 
 
-  if (!routerReady) {
-    return null; // or a loading indicator until the router is ready
-  }
-  
+//   if (!routerReady) {
+//     return null; // or a loading indicator until the router is ready
+//   }
+
     const readMessage = async(friendAddress) =>{
         try {
             const contract = await connectingWithContract();
@@ -69,8 +69,8 @@ export const ChatAppProvider = ({children}) => {
             setloading(true);
             await createduser.wait();
             setloading(false);
-            // window.location.reload();
-            router.push("/");
+            window.location.reload();
+            // router.push("/");
         } catch (error) {
             seterror("Error While Creating yout account , Plaese reload The Browser and try again")
         }
