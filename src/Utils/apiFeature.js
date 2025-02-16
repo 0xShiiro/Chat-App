@@ -1,4 +1,4 @@
-import {ethers} from 'ethers';
+import {ethers,BrowserProvider,Contract} from 'ethers';
 import Web3Modal from 'web3modal';
 import { Contract_abi,Contract_address } from '../context/constant';
 
@@ -27,7 +27,7 @@ export const connectWallet = async () => {
         console.log('Connected', accounts[0]);
         return accounts[0];
         
-    } catch (error) {
+    } catch (error) {   
         console.log(error)
     }  
 }
@@ -36,7 +36,7 @@ const fetchContract = async (signerOrProvider) => {
     return new ethers.Contract(Contract_address, Contract_abi, signerOrProvider);
 }
 
-export const conncectingWithContract = async () => {
+export const connectingWithContract = async () => {
     try {
         const { ethereum } = window;
         if (!ethereum) {
@@ -45,9 +45,10 @@ export const conncectingWithContract = async () => {
         }
         const web3modal = new Web3Modal();
         const connection = await web3modal.connect();
-        const provider = new ethers.providers.Web3Provider(connection);
-        const signer = provider.getSigner();
-        const contract = fetchContract(signer);
+        const provider = new BrowserProvider(connection);
+        const signer = await provider.getSigner();
+        const contract = new Contract(Contract_address,Contract_abi,signer);
+        console.log('Contract', contract);
         return contract;
     } catch (error) {
         console.log(error)

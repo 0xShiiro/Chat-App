@@ -3,11 +3,11 @@ import React, { useState, useContext } from 'react'
 import Style from './Model.module.css';
 import Image from "next/image";
 import { ChatAppContext } from '../../context/ChatAppContext';
-import { Loader } from "../Loader/Loader";
+import  Loader  from "../Loader/Loader";
 import images from "../../assets";
-const Model = ({ openBox, title, head,address, info, smallInfo, image, fucntionName  }) => {
+const Model = ({ openBox, title, head, address, info, smallInfo, image, functionName}) => {
   const [name, setname] = useState("");
-  const [accounAddress, setaccounAddress] = useState("");
+  const [accountAddress, setaccountAddress] = useState("");
 
   const { loading } = useContext(ChatAppContext);
   return (
@@ -43,11 +43,11 @@ const Model = ({ openBox, title, head,address, info, smallInfo, image, fucntionN
                 <input 
                 type="text"
                 placeholder={address || "Enter Address..."}
-                onChange={(e)=>setname(e.target.value)}
+                onChange={(e)=>setaccountAddress(e.target.value)}
                 />
               </div>
               <div className={Style.Model_box_right_name_btn}>
-                <button onClick={()=> fucntionName({name,accounAddress})} >
+                <button onClick={()=> functionName({name,accountAddress})} >
                   {""}
                   <Image src={images.send} alt='send' width={30} height={30}/>
                   {' '}

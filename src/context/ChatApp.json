@@ -2,7 +2,7 @@
   "_format": "hh-sol-artifact-1",
   "contractName": "ChatApp",
   "sourceName": "contracts/Chatapp.sol",
-  "abi": [
+  "abi":[
     {
       "inputs": [
         {
@@ -24,6 +24,37 @@
     {
       "inputs": [
         {
+          "internalType": "string",
+          "name": "_name",
+          "type": "string"
+        }
+      ],
+      "name": "CreateaAccount",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_friend",
+          "type": "address"
+        },
+        {
+          "internalType": "string",
+          "name": "_msg",
+          "type": "string"
+        }
+      ],
+      "name": "sendMessage",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
           "internalType": "address",
           "name": "_address",
           "type": "address"
@@ -38,19 +69,6 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "string",
-          "name": "_name",
-          "type": "string"
-        }
-      ],
-      "name": "CreateaAccount",
-      "outputs": [],
-      "stateMutability": "nonpayable",
       "type": "function"
     },
     {
@@ -156,24 +174,6 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "address",
-          "name": "_friend",
-          "type": "address"
-        },
-        {
-          "internalType": "string",
-          "name": "_msg",
-          "type": "string"
-        }
-      ],
-      "name": "sendMessage",
-      "outputs": [],
-      "stateMutability": "nonpayable",
       "type": "function"
     }
   ],

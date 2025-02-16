@@ -1,8 +1,8 @@
 'use client'
 import React,{useState , useEffect} from 'react'
-import {useRouter} from 'next/router'
+import {useRouter} from 'next/navigation'
 
-import { CheckIfWalletConnected,connectWallet,conncectingWithContract } from '../Utils/apiFeature';
+import { CheckIfWalletConnected,connectWallet,connectingWithContract } from '../Utils/apiFeature';
 
 export const ChatAppContext = React.createContext();
 export const ChatAppProvider = ({children}) => {
@@ -16,11 +16,14 @@ export const ChatAppProvider = ({children}) => {
     const [currentUser, setcurrentUser] = useState("")
     const [currentUserAddress, setcurrentUserAddress] = useState("")
 
+  const [routerReady, setRouterReady] = useState(false);
+    const router = useRouter();
+
     
 
     const fetchData = async() =>{
         try{
-            const contract = await conncectingWithContract();
+            const contract = await connectingWithContract();
             const connectAccount = await connectWallet();
             if (connectAccount) {
                 console.log(connectAccount);
@@ -38,10 +41,17 @@ export const ChatAppProvider = ({children}) => {
     };
     useEffect(() => {
         fetchData();
+        setRouterReady(true);
     },[]);
+
+
+  if (!routerReady) {
+    return null; // or a loading indicator until the router is ready
+  }
+  
     const readMessage = async(friendAddress) =>{
         try {
-            const contract = await conncectingWithContract();
+            const contract = await connectingWithContract();
             const read = await contract.readMessage(friendAddress);
             setfriendMsg(read);
         } catch (error) {
@@ -51,16 +61,16 @@ export const ChatAppProvider = ({children}) => {
 
     const createAccount = async({name,accountAddress}) =>{
         try {
-            if(name || accountAddress === ""){
-                return seterror("Please Fill all the fields")
-            }
-            const contract = await conncectingWithContract();
-            const createduser = await contract.createaAccount(name);
+            // if(name || accountAddress === ""){
+            //     return seterror("Please Fill all the fields")
+            // }
+            const contract = await connectingWithContract();
+            const createduser = await contract.CreateaAccount(name);
             setloading(true);
             await createduser.wait();
             setloading(false);
-            window.location.reload();
-            // router.push("/");
+            // window.location.reload();
+            router.push("/");
         } catch (error) {
             seterror("Error While Creating yout account , Plaese reload The Browser and try again")
         }
@@ -68,10 +78,10 @@ export const ChatAppProvider = ({children}) => {
 
     const addFriend = async({name,friendAddress}) =>{
         try {
-            if(name || friendAddress === ""){
-                return seterror("Please Fill all the fields")
-            }
-            const contract = await conncectingWithContract();
+            // if(name || friendAddress === ""){
+            //     return seterror("Please Fill all the fields")
+            // }
+            const contract = await connectingWithContract();
             const add = await contract.AddFriend(friendAddress,name);
         } catch (error) {
             seterror('Something went wrong while adding friend')
@@ -80,10 +90,10 @@ export const ChatAppProvider = ({children}) => {
 
     const sendMessage = async({friendAddress,message}) =>{
         try {
-            if(msg || friendAddress === ""){
+            if(msg == "" || friendAddress === ""){
                 return seterror("Please Fill all the fields")
             }
-            const contract = await conncectingWithContract();
+            const contract = await connectingWithContract();
             const send = await contract.sendMessage(friendAddress,message);
             setloading(true);
             await send.wait();
@@ -99,7 +109,7 @@ export const ChatAppProvider = ({children}) => {
 
     const readUser = async(address) =>{
         try {
-            const contract = await conncectingWithContract();
+            const contract = await connectingWithContract();
             const user = await contract.getUserName(address);
             setcurrentUser(user);
             setcurrentUserAddress(address);

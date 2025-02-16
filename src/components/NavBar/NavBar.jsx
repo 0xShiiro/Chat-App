@@ -37,9 +37,9 @@ export const NavBar = () => {
   const [active, setactive] = useState(2);
   const [open, setopen] = useState(false);
   const [openModal, setopenModal] = useState(false);
-  const [error, seterror] = useState("")
+  // const [error, seterror] = useState("")
 
-  const { account, userName, connectWallet,createAccount } = useContext(ChatAppContext);
+  const { account, userName, connectWallet,createAccount,error } = useContext(ChatAppContext);
   console.log(account);
   return (
     <div className={Style.NavBar}>
@@ -130,11 +130,11 @@ export const NavBar = () => {
                 info="This is a chat app where you can chat with your friends and family. You can also create a group and chat with your friends. You can also create a group and chat with your friends."
                 smallInfo="Kindly enter your name"   
                 image={images.hero}
-                fucntionName={createAccount}             
+                functionName= {createAccount}             
           />
         </div>
       )}
-      {error=="" ? "":<Error />}
+      {error == "" ? "":<Error error={error}/>}
     </div>
   )
 }
