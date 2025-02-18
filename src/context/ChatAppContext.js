@@ -29,11 +29,11 @@ export const ChatAppProvider = ({children}) => {
                 console.log(connectAccount);
                 setaccount(connectAccount);
                 const userName = await contract.getUserName(connectAccount);
-                setUserName(userName);
+                setuserName(userName);
                 const friendList = await contract.getFriendList(connectAccount);
-                setFriendLists(friendList);
+                setfriendLists(friendList);
                 const userList = await contract.getAllUsers();
-                setUserLists(userList);
+                setuserLists(userList);
             }
     } catch(error){
         console.log(error)
