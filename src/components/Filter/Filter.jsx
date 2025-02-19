@@ -22,7 +22,7 @@ const Filter = () => {
             CLEAR CHAT          
           </button>
           <button onClick={()=>setaddfriend(true)} >
-            <Image src={images.clear} alt="clear" width={20} height={20}/>  
+            <Image src={images.user} alt="clear" width={20} height={20}/>  
             ADD FRIEND         
           </button>
         </div>
@@ -35,7 +35,7 @@ const Filter = () => {
             title="Welcome to BlockChat"
             head="Social App"
             info="This is a chat app where you can chat with your friends and family. You can also create a group and chat with your friends. You can also create a group and chat with your friends."
-            smallInfo="Kindly Select your friend"
+            smallInfo="Kindly Enter your friend's Name and Address"
             image={images.hero}
             functionName={addFriend}
             />

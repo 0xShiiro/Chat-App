@@ -48,7 +48,6 @@ export const connectingWithContract = async () => {
         const provider = new BrowserProvider(connection);
         const signer = await provider.getSigner();
         const contract = new Contract(Contract_address,Contract_abi,signer);
-        console.log('Contract', contract);
         return contract;
     } catch (error) {
         console.log(error)

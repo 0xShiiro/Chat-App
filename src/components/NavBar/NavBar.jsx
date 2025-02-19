@@ -40,7 +40,6 @@ export const NavBar = () => {
   // const [error, seterror] = useState("")
 
   const { account, userName, connectWallet,createAccount,error } = useContext(ChatAppContext);
-  console.log(account);
   return (
     <div className={Style.NavBar}>
       <div className={Style.NavBar_box}>

@@ -59,14 +59,11 @@
         width:100%
     }
     .Filter_box_right button{
-        font-size: 0.5rem;
+        font-size: 0.8rem;
+        gap:0.3rem
     }
     .Filter_model{
         position:absolute;
         inset: 0 0 -70% 0;
-    }
-    .Filter_box_right button{
-        font-size: 0.8rem;
-        gap:0.3rem
     }
 }
