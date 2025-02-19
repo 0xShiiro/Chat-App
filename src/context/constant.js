@@ -1,3 +1,3 @@
 import ChatApp from './ChatApp.json'
-export const Contract_address = "0x4b15480DdD6FF2A7cd55dF607633B72e2976288F"
+export const Contract_address = "0xD621e5C0261086D7AF07A9f5cE44201088ADEe0E"
 export const Contract_abi = ChatApp.abi;    
