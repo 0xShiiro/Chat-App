@@ -47,7 +47,6 @@ contract ChatApp {
             CheckAlreadyFriends(_address, msg.sender) == false,
             "Already friends"
         );
-        users[msg.sender].friends.push(friend(_address, _name));
 
         _addFriend(msg.sender, _address, _name);
         _addFriend(_address, msg.sender, users[msg.sender].name);

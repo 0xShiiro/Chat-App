@@ -91,9 +91,9 @@ export const ChatAppProvider = ({children}) => {
 
     const sendMessage = async({friendAddress,message}) =>{
         try {
-            if(msg == "" || friendAddress === ""){
-                return seterror("Please Fill all the fields")
-            }
+            // if(msg == "" || friendAddress === ""){
+            //     return seterror("Please Fill all the fields")
+            // }
             const contract = await connectingWithContract();
             const send = await contract.sendMessage(friendAddress,message);
             setloading(true);

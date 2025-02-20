@@ -74,10 +74,45 @@ const Chat = ({ functionName, readMessage, friendMsg, account, userName, loading
                                         {" "}
                                     </p>
                                 </div>
-                            ))
-                        }
+                            ))}
                     </div>
                 </div>
+                {currentUser && currentUserAddress ? (
+                    <div className={Style.Chat_box_send}>
+                        <div className={Style.Chat_box_send_img}>
+                            <Image 
+                                src={images.smile}
+                                alt="smile"
+                                width={50}
+                                height={50}
+                                />
+                            <input 
+                                type="text" 
+                                placeholder='type your message'
+                                onChange={(e)=>setmessage(e.target.value)}
+                                />
+                            <Image 
+                                src={images.file}
+                                alt="file"
+                                width={50}
+                                height={50}
+                            />
+                            {
+                                loading == true ?(
+                                    <Loader />
+                                ):(
+                                    <Image 
+                                    src={images.send}
+                                    alt="file"
+                                    width={50}
+                                    height={50}
+                                    onClick={()=>functionName({friendAddress:chatData.address,message: message})}
+                                    />
+                                )
+                            }
+                        </div>
+                    </div>
+                ):(" ")}
             </div>
         </div>
     )

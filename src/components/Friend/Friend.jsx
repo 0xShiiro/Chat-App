@@ -8,14 +8,15 @@ import { ChatAppContext } from '../../context/ChatAppContext';
 const Friend = () => {
   const { sendMessage, account, friendLists, readMessage, userName, loading, readUser,
     currentUser, currentUserAddress,friendMsg } = useContext(ChatAppContext);
-  
+    console.log(friendLists)
   return (
     <div className={Style.Friend}>
       <div className={Style.Friend_box}>
         <div className={Style.Friend_box_left}>
           {
             friendLists.map((el, i) => (
-              <Card key={i}
+              <Card 
+                key={i+1}
                 el={el}
                 i={i}
                 readMessage={readMessage}
@@ -25,7 +26,10 @@ const Friend = () => {
           }
         </div>
         <div className={Style.Friend_box_right}>
-          <Chat functionName={sendMessage}
+          <Chat 
+          key={currentUserAddress}
+          sendMessage={sendMessage}
+            functionName={sendMessage}
             readMessage={readMessage}
             friendMsg={friendMsg}
             account={account}
