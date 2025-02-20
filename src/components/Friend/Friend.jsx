@@ -1,14 +1,15 @@
-import React, { useEffect, useContext } from 'react'
+'use client'   
+import React, {useContext} from 'react'
 import Style from './Friend.module.css';
-import images from '../../assets';
-import Image from 'next/image';
+// import images from '../../assets';
+// import Image from 'next/image';
 import Card from './Card/Card';
 import Chat from './Chat/Chat';
 import { ChatAppContext } from '../../context/ChatAppContext';
 const Friend = () => {
   const { sendMessage, account, friendLists, readMessage, userName, loading, readUser,
     currentUser, currentUserAddress,friendMsg } = useContext(ChatAppContext);
-    console.log(friendLists)
+    
   return (
     <div className={Style.Friend}>
       <div className={Style.Friend_box}>
@@ -16,7 +17,7 @@ const Friend = () => {
           {
             friendLists.map((el, i) => (
               <Card 
-                key={i+1}
+                key={el.friendAddress}
                 el={el}
                 i={i}
                 readMessage={readMessage}
@@ -27,8 +28,8 @@ const Friend = () => {
         </div>
         <div className={Style.Friend_box_right}>
           <Chat 
-          key={currentUserAddress}
-          sendMessage={sendMessage}
+            key={currentUserAddress}
+            sendMessage={sendMessage}
             functionName={sendMessage}
             readMessage={readMessage}
             friendMsg={friendMsg}

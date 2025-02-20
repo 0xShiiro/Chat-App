@@ -44,9 +44,9 @@ const Chat = ({ functionName, readMessage, friendMsg, account, userName, loading
                     <div className={Style.Chat_box_left}>
                         {
                             friendMsg.map((el, i) => (
-                                <div>
+                                <div key={i} >
                                     {el.sender === chatData.address ? (
-                                        <div className={Style.Chat_box_left_title}>
+                                        <div className={Style.Chat_box_left_title} key={i+1}>
                                             <Image src={images.accountName} alt="image" width={50} height={50} />
                                             <span>
                                                 {chatData.name} {" "}
@@ -55,7 +55,7 @@ const Chat = ({ functionName, readMessage, friendMsg, account, userName, loading
                                         </div>
 
                                     ) : (
-                                        <div className={Style.Chat_box_left_title}>
+                                        <div className={Style.Chat_box_left_title} key={i+2}>
                                             <Image
                                                 src={images.accountName}
                                                 alt="image"

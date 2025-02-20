@@ -1,5 +1,4 @@
-'use client'
-import React,{useEffect} from 'react'
+import React from 'react'
 import Style from './Card.module.css';
 import Link from 'next/link';
 import images from '../../../assets';

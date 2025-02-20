@@ -21,29 +21,28 @@ export const ChatAppProvider = ({children}) => {
 
     
 
-    const fetchData = async() =>{
-        try{
-            const contract = await connectingWithContract();
-            const connectAccount = await connectWallet();
-            if (connectAccount) {
-                console.log(connectAccount);
-                setaccount(connectAccount);
-                const userName = await contract.getUserName(connectAccount);
-                setuserName(userName);
-                const userList = await contract.getAllUsers();
-                setuserLists(userList);
-
-                const friendList = await contract.getFriendList();
-                setfriendLists(friendList);
-            }
-    } catch(error){
-        console.log(error)
-    }
-    };
     useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const contract = await connectingWithContract();
+                const connectAccount = await connectWallet();
+                if (connectAccount) {
+                    console.log(connectAccount);
+                    setaccount(connectAccount);
+                    const userName = await contract.getUserName(connectAccount);
+                    setuserName(userName);
+                    const userList = await contract.getAllUsers();
+                    setuserLists(userList);
+                    const friendList = await contract.getFriendList();
+                    setfriendLists(friendList);
+                }
+            } catch (error) {
+                console.log(error);
+            }
+        };
+
         fetchData();
-        // setRouterReady(true);
-    },[]);
+    }, []);
 
 
 //   if (!routerReady) {
@@ -119,7 +118,7 @@ export const ChatAppProvider = ({children}) => {
         }
     }
     return (
-        <ChatAppContext.Provider value={{fetchData,
+        <ChatAppContext.Provider value={{
         account,
         userName,
         friendLists,
