@@ -17,7 +17,9 @@ const Chat = ({ functionName, readMessage, friendMsg, account, userName, loading
     useEffect(() => {
         const name = searchParams.get("name") || "";
         const address = searchParams.get("address") || "";
-        setchatData({ name, address });
+        setchatData({   name:name, 
+                        address:address
+                    });
     }, [searchParams]); // ✅ Reacts to URL changes
 
 

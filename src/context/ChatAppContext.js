@@ -52,10 +52,15 @@ export const ChatAppProvider = ({children}) => {
     const readMessage = async(friendAddress) =>{
         try {
             const contract = await connectingWithContract();
+            console.log("Contract connected")
+            console.log(friendAddress);
             const read = await contract.readMessage(friendAddress);
+            console.log(read);
             setfriendMsg(read);
+            console.log(friendMsg);
         } catch (error) {
-            seterror("Currently You have no Messages")
+            // seterror("Currently You have no Messages")
+            console.error("Error Reading Messages")
         }
     }
 
@@ -111,6 +116,7 @@ export const ChatAppProvider = ({children}) => {
         try {
             const contract = await connectingWithContract();
             const user = await contract.getUserName(address);
+            console.log(user);
             setcurrentUser(user);
             setcurrentUserAddress(address);
         } catch (error) {
